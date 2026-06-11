@@ -1,0 +1,46 @@
+# Terrapado Harness Prompt Configuration
+# AI 모델 및 실행 설정
+
+harness:
+  name: "Terrapado Harness Prompt"
+  version: "1.0.0"
+  description: "AI 기반 감정 기록 앱 Terrapado 개발을 위한 프롬프트 엔지니어링 허브"
+
+model:
+  provider: "openai"
+  name: "gpt-4o"
+  temperature: 0.3          # 감정 분석의 일관성과 창의성 균형
+  max_tokens: 2048
+  top_p: 0.9
+  stream: true
+
+agents:
+  ui_implementer:
+    model: "gpt-4o"
+    temperature: 0.2          # 디자인 일관성 유지
+    focus: "Figma → 코드 변환 및 UI 컴포넌트 구현"
+
+  animation_specialist:
+    model: "gpt-4o"
+    temperature: 0.5          # 창의적인 애니메이션 설계
+    focus: "CustomPainter/Canvas 애니메이션 및 전환 효과"
+
+  backend_engineer:
+    model: "gpt-4o"
+    temperature: 0.1          # 정확한 API 로직
+    focus: "Firebase 연동, 데이터 모델, 인증"
+
+  qa_optimizer:
+    model: "gpt-4o"
+    temperature: 0.1
+    focus: "코드 리뷰, 성능 최적화, 메모리 누수 검출"
+
+workflow:
+  default_flow:
+    - ui_implementer + animation_specialist (병렬)
+    - backend_engineer
+    - qa_optimizer (최종 검수)
+
+storage:
+  logs_retention_days: 90
+  eval_auto_archive: true
