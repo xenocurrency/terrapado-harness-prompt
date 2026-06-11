@@ -26,6 +26,52 @@
 
 ---
 
+## 1.5 현재 개발 상태 (Current State)
+
+> **시작 포인트** — 아래 상태에서 개발을 이어갑니다. 모든 Agent는 이 기존 코드베이스를 읽고, 그 위에 기능을 추가/수정해야 합니다.
+
+### 기존 프로젝트 (Flutter)
+
+| 항목 | 내용 |
+|------|------|
+| **위치** | `D:\coding\flutter_ui` |
+| **프레임워크** | Flutter (SDK >=3.0.1) |
+| **디자인 추출** | Pixso Dev Mode → Flutter 코드 자동 생성 |
+| **디자인 기준** | Figma 440×956px |
+
+### ✅ 이미 구현된 기능
+
+| 기능 | 상태 | 상세 |
+|------|------|------|
+| Firebase Core | ✅ | `firebase_core` 연동 완료 |
+| Firebase Auth | ✅ | 이메일/비밀번호 + Google 로그인 (`google_sign_in`) |
+| Cloud Firestore | ✅ | 감정 데이터, 사용자 데이터 저장 구조 있음 |
+| Firebase Messaging | ✅ | 푸시 알림 수신 인프라 세팅 |
+| Firebase Crashlytics | ✅ | 크래시 로그 수집 준비 |
+| Firebase Analytics | ✅ | 사용자 행동 분석 트래킹 |
+| 상태 관리 | ✅ | `Provider` 기반 |
+| 로컬 저장소 | ✅ | `flutter_secure_storage` + `shared_preferences` |
+| 로컬 알림 | ✅ | `flutter_local_notifications` |
+| 화면 구조 | ✅ | `lib/screens/` — 기본 화면 레이아웃 존재 |
+| 서비스 레이어 | ✅ | `lib/services/` — API/DB 서비스 분리 |
+| 위젯 | ✅ | `lib/widgets/` — 재사용 컴포넌트 |
+| 모델 | ✅ | `lib/models/` — 데이터 모델 정의됨 |
+
+### ❌ 아직 구현되지 않은 기능 (이 하네스가 집중할 부분)
+
+| 기능 | 우선순위 | 설명 |
+|------|---------|------|
+| Emotion Orb 애니메이션 | 🔴 상 | `CustomPainter` 구체(Orb) 파동 애니메이션, Pixso 정적 이미지 교체 |
+| 감정 선택 → Orb 반응 연동 | 🔴 상 | 사용자 감정 선택 시 Orb 색상/움직임 변화 |
+| AI 피드백 LLM 연동 | 🔴 상 | Groq API 등 연결, 감정 입력 → 공감 피드백 생성 |
+| 시간대별 화면 전환 | 🟡 중 | 아침/저녁 자동 모드 전환 |
+| 햅틱 피드백 | 🟡 중 | 화면 전환/감정 선택 시 진동 |
+| 반응형 레이아웃 보정 | 🟡 중 | 다양한 디바이스 해상도 대응 |
+| 오프라인 캐싱 | 🟢 하 | 네트워크 없을 때 로컬 저장 및 자동 동기화 |
+| 푸시 리마인더 | 🟢 하 | 매일 저녁 감정 기록 알림 |
+
+---
+
 ## 2. 개발 에이전트 구성
 
 4개의 전문화된 에이전트를 순차적으로 또는 병렬로 기동하십시오.
