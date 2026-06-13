@@ -75,6 +75,7 @@
 ## 1.6 에이전트 작업 범위 (Agent Rules of Engagement)
 
 > **Sisyphus (오케스트레이터)의 작업 범위** — 사용자와의 합의 사항.
+> **개발 환경**: 사용자가 VS Code + 핫 리로드로 직접 실행. AI는 절대 빌드/실행하지 않음.
 
 ### ✅ 허용되는 작업 (Code Only)
 - **코드 파일 수정** — Flutter Dart 파일, pubspec.yaml, Gradle 설정 등 모든 코드 파일의 읽기/쓰기/수정
@@ -82,16 +83,17 @@
 - **파일 시스템 작업** — 파일 생성/삭제/이동 (단, 사용자 확인 후)
 - **탐색 및 조회** — 코드베이스 구조 파악, 패턴 검색, 파일 읽기
 
-### ❌ 금지되는 작업 (No Terminal Execution)
-- **`flutter run`** 실행 금지 — 앱 실행은 사용자가 핫 리로드로 직접 확인
-- **`flutter build apk`** 실행 금지 — APK 빌드 금지
+### ❌ 절대 금지 (NO BUILD / NO TERMINAL)
+- **빌드 명령 일절 금지** — `flutter build`, `flutter run`, `npm run build`, `vite build`, `npm run dev` 등 모든 빌드/실행 명령 금지
 - **`flutter clean`** 실행 금지
 - **`adb install`** 실행 금지 — 휴대폰 설치 금지
 - **`flutter pub get`** 실행 금지 (단, pubspec.yaml 수정 후 사용자 요청 시 예외)
 - 그 외 모든 터미널 명령어 실행 금지
+- AI는 **코드만 수정**하고, 빌드/실행/배포는 절대 하지 않음
 
-### 🔄 사용자 책임
-- **핫 리로드/재시작** — 수정된 코드 적용 및 테스트
+### 🔄 사용자 책임 (VS Code + Hot Reload)
+- **VS Code에서 직접 실행** — `flutter run` 등 모든 실행은 사용자가 VS Code 터미널에서 수행
+- **핫 리로드/핫 리스타트** — 수정된 코드 적용 및 테스트
 - **APK 빌드 및 설치** — 최종 빌드 및 디바이스 배포
 - **터미널 명령** — Flutter/Git 관련 모든 터미널 작업
 
