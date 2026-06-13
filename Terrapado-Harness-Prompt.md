@@ -34,7 +34,7 @@
 
 | 항목 | 내용 |
 |------|------|
-| **위치** | `D:\coding\flutter_ui` |
+| **위치** | `C:\coding\flutter_ui` |
 | **프레임워크** | Flutter (SDK >=3.0.1) |
 | **디자인 추출** | Pixso Dev Mode → Flutter 코드 자동 생성 |
 | **디자인 기준** | Figma 440×956px |
